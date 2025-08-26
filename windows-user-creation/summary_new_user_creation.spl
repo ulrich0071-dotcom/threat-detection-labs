@@ -1,0 +1,7 @@
+# Goal: Summarize how many new user accounts were created on each machine.
+# This helps identify if a system has multiple unexpected account creations,
+# which could indicate persistence or insider activity.
+
+index=winsec EventCode=4720              → Search Windows Security logs for new user creation events
+| stats count by host                    → Count how many new users were created on each machine
+| sort - count                           → Show machines with the highest number of new accounts first
