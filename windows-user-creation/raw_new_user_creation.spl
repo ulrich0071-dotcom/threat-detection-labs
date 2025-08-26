@@ -1,0 +1,6 @@
+# Goal: Detect whenever a new user account is created in Windows (EventCode 4720).
+# This is important because attackers often create hidden accounts for persistence.
+
+index=winsec EventCode=4720              → Search Windows Security logs for new user creation events
+| table _time, host, Message             → Show the timestamp, machine, and the full message text
+| sort - _time                           → Sort results so the newest events appear first
