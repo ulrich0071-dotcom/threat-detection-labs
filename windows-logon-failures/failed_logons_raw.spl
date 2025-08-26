@@ -1,0 +1,3 @@
+index=winsec EventCode=4625
+| table _time, host, Message
+| sort - _time
