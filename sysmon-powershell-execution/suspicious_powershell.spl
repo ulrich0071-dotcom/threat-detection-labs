@@ -1,0 +1,9 @@
+# Goal: Detect suspicious PowerShell executions that attackers often use.
+# Why: Attackers abuse PowerShell with hidden or obfuscated commands.
+# This query focuses on common red flags.
+
+index=sysmon sourcetype="WinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=1       → Sysmon process creation events
+Image="*powershell.exe*"                                                                     → Only look at PowerShell
+(CommandLine="*EncodedCommand*" OR CommandLine="*Bypass*" OR CommandLine="*Invoke-Expression*")   → Match suspicious flags
+| table _time, host, CommandLine, ParentImage                                                → Show when/where, the suspicious command, and parent process
+| sort - _time                                                                               → Newest first
