@@ -13,8 +13,7 @@ Image="powershell.exe" → Only PowerShell
 | sort - _time → Newest first
 
 **Example Output**
-![PowerShell Execution Example](./screenshots/Screenshot 2025-08-27 101220.png)
-
+![PowerShell Execution Example](./screenshots/Screenshot%202025-08-27%20101220.png)
 
 **Summary — which commands run most**
 index=sysmon sourcetype="WinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=1 → Sysmon process-start events
