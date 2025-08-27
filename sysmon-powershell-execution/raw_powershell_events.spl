@@ -1,0 +1,7 @@
+# Goal: See every time PowerShell starts (Sysmon EventCode=1: Process Create).
+# Why: Attackers often abuse PowerShell. First we get visibility; later we flag suspicious use.
+
+index=sysmon sourcetype="WinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=1   → Only Sysmon process-start events
+Image="*powershell.exe*"                                                                   → Keep just processes where the image is powershell.exe
+| table _time, host, Image, CommandLine, ParentImage                                       → Show when/where, what ran, the exact command, and the parent
+| sort - _time                                                                             → Newest first
