@@ -13,7 +13,9 @@ Image="powershell.exe" → Only PowerShell
 | sort - _time → Newest first
 
 **Example Output**
-![PowerShell Execution Example](screenshots/powershell-raw.png)
+![PowerShell Execution Example](threat-detection-labs/sysmon-powershell-execution/screenshots
+/
+Screenshot 2025-08-27 101220.png)
 
 
 **Summary — which commands run most**
